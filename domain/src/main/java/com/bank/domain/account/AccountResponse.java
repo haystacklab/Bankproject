@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 public class AccountResponse {
-    private AccountDetails accountDetails = new AccountDetails();
+    private AccountDetails accountDetails;
     private List<CheckingAccount> checkingAccounts;
     private List<CreditAccount> creditAccounts;
 }

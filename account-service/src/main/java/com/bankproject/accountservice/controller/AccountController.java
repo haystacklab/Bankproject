@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("account")
@@ -25,7 +26,7 @@ public class AccountController {
     }
 
     @GetMapping(value = "/getAllUsers", produces = "application/json")
-    public List<User> getAllUsers() {
+    public CompletableFuture<List<User>> getAllUsers() {
         return accountService.getAllUsers();
     }
 }
