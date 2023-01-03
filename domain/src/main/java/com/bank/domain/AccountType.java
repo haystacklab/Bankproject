@@ -1,4 +1,4 @@
-package com.bank.domain.checking;
+package com.bank.domain;
 
 public enum AccountType {
     CHECKING,
