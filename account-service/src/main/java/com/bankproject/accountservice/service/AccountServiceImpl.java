@@ -1,17 +1,18 @@
 package com.bankproject.accountservice.service;
 
+import com.bank.domain.account.AccountDetails;
 import com.bank.domain.account.AccountResponse;
 import com.bank.domain.checking.CheckingAccount;
 import com.bank.domain.credit.CreditAccount;
 import com.bankproject.accountservice.domain.User;
+import com.bankproject.accountservice.helper.CheckingAccountHelper;
+import com.bankproject.accountservice.helper.CreditAccountHelper;
 import com.bankproject.accountservice.repository.UserRepository;
-import com.bankproject.accountservice.util.FeignServiceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 import static com.bankproject.accountservice.util.LoggerUtil.log;
 
@@ -19,10 +20,13 @@ import static com.bankproject.accountservice.util.LoggerUtil.log;
 public class AccountServiceImpl implements AccountService{
 
     @Autowired
-    private FeignServiceUtil feignServiceUtil;
+    private AccountHelper accountHelper;
 
     @Autowired
-    private UserRepository userRepository;
+    private CreditAccountHelper creditAccountHelper;
+
+    @Autowired
+    private CheckingAccountHelper checkingAccountHelper;
 
     @Override
     public AccountResponse getAccountsByUserId(String userId) {
@@ -33,9 +37,9 @@ public class AccountServiceImpl implements AccountService{
     }
 
     public AccountResponse getAccountsByCF(String userId) {
-        CompletableFuture<AccountResponse> accRespCF = CompletableFuture.supplyAsync(AccountResponse::new);
-        CompletableFuture<List<CheckingAccount>> checkingAccountsCF = getCheckingAccounts(userId);
-        CompletableFuture<List<CreditAccount>> creditAccountsCF = getCreditAccounts(userId);
+        CompletableFuture<AccountResponse> accRespCF = accountHelper.getAccountDetails(userId);
+        CompletableFuture<List<CheckingAccount>> checkingAccountsCF = checkingAccountHelper.getCheckingAccounts(userId);
+        CompletableFuture<List<CreditAccount>> creditAccountsCF = creditAccountHelper.getCreditAccounts(userId);
         log("Inside getAccounts service main");
 
         AccountResponse accountResponse = accRespCF
@@ -55,21 +59,7 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return (List<User>) userRepository.findAll();
-    }
-
-    public CompletableFuture<List<CheckingAccount>> getCheckingAccounts(String userId) {
-        return CompletableFuture.supplyAsync(() -> {
-            log("Starting to fetch checking accounts");
-            return feignServiceUtil.getCheckingAccounts(userId);
-        });
-    }
-
-    public CompletableFuture<List<CreditAccount>> getCreditAccounts(String userId) {
-        return CompletableFuture.supplyAsync(() -> {
-            log("Starting to fetch credit accounts");
-            return feignServiceUtil.getCreditAccounts(userId);
-        });
+    public CompletableFuture<List<User>> getAllUsers() {
+        return accountHelper.getAllUsers();
     }
 }
