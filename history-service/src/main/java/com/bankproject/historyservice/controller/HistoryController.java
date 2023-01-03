@@ -1,7 +1,7 @@
 package com.bankproject.historyservice.controller;
 
+import com.bank.domain.AccountType;
 import com.bankproject.historyservice.domain.Transaction;
-import com.bankproject.historyservice.domain.TransactionType;
 import com.bankproject.historyservice.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +21,7 @@ public class HistoryController {
 
     @GetMapping(value = "/get/{accountId}/{accountType}", produces = "application/json")
     public CompletableFuture<List<Transaction>> getTransacations(
-            @PathVariable String accountId, @PathVariable TransactionType accountType) {
+            @PathVariable String accountId, @PathVariable AccountType accountType) {
         return historyService.getTransactionsByAccountIdAndType(accountId, accountType);
     }
 }
