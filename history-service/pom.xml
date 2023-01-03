@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bankproject</groupId>
-    <artifactId>History-service</artifactId>
+    <artifactId>history-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>History-service</name>
     <description>History-service</description>
