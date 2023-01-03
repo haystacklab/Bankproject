@@ -1,5 +1,6 @@
 package com.bankproject.historyservice.domain;
 
+import com.bank.domain.AccountType;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -18,6 +19,8 @@ public class Transaction {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private String transactionId;
     private String accountId;
+    @Enumerated(EnumType.STRING)
+    private AccountType accountType;
     @Column(insertable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date transactionTimeStamp;
