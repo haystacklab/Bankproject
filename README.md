@@ -17,15 +17,15 @@ History service
 As the image suggests, the customer requests for the details of the account. The account service asynchronously calls checking and credit services to fetch customer's checking and credit accounts.
 
 ## Tech
-Spring Boot - 2.7.7
-Java - 11.0.9
-Lombok
-Spring JPA
-Spring Cloud API gateway
-Spring cloud config
-Open Feign
-H2 database
-Spring web
+- Spring Boot - 2.7.7
+- Java - 11.0.9
+- Lombok
+- Spring JPA
+- Spring Cloud API gateway
+- Spring cloud config
+- Open Feign
+- H2 database
+- Spring web
 
 # Application configuration
 The ports configured to be used by each microservice:
