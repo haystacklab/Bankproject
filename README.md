@@ -27,21 +27,15 @@ Open Feign
 H2 database
 Spring web
 
-# Config
-port 8888
+# Application configuration
+The ports configured to be used by each microservice:
 
-# Gateway
-port 8000
-
-# Account
-port 8001
-
-# Checking
-port 8002
-
-# Credit
-port 8003
-
-# History
-port 8004
+| Service | Port |
+| ------ | ------ |
+| Config | 8888 |
+| Gateway | 8000 |
+| Account | 8001 |
+| Checking | 8002 |
+| Credit | 8003 |
+| History | 8004 |
 
