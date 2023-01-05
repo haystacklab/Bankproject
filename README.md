@@ -4,7 +4,7 @@ This project explores the capabilities of the CompletableFuture in Java specific
 
 The below image is an architecture of the application showing the flow of data and the asynchronous API calls that happen in between them.
 
-[![architecture](https://github.com/haystacklab/Bankproject/blob/dev/resources/bank-project.jpg "Bank project architecture")]
+![architecture](https://github.com/haystacklab/Bankproject/blob/dev/resources/bank-project.jpg "Bank project architecture")
 
 ## Services
 There are three services used in the project which are microservices. They are:
