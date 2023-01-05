@@ -17,15 +17,21 @@ History service
 As the image suggests, the customer requests for the details of the account. The account service asynchronously calls checking and credit services to fetch customer's checking and credit accounts.
 
 ## Tech
-- Spring Boot - 2.7.7
-- Java - 11.0.9
-- Lombok
-- Spring JPA
-- Spring Cloud API gateway
-- Spring cloud config
-- Open Feign
-- H2 database
-- Spring web
+| Tech | Version |
+| ------ | ------ |
+| Java | 11.0.9 |
+| Spring Boot | 2.7.7 |
+| Spring Cloud | 2021.0.5 |
+| Lombok | Resolved from Spring Boot Parent |
+| Spring JPA | Resolved from Spring Boot Parent |
+| Spring Cloud API gateway | Resolved from Spring Cloud |
+| Spring cloud config | Resolved from Spring Cloud |
+| Open Feign | Resolved from Spring Cloud |
+| H2 database | Resolved from Spring Boot Parent |
+| Spring web | Resolved from Spring Boot Parent |
+
+> Another feature of Spring Boot is demonstrated here (automated dependency management) as the versions
+> for all the dependencies are resolved from their parent artifacts and we do not have to manually maintain them.
 
 # Application configuration
 The ports configured to be used by each microservice:
